@@ -1,0 +1,29 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+div{ 
+    background-color: red;
+    width:fit-content;
+    height:30px;
+    display:flex;
+    
+}
+button{
+    margin-left:20px;
+}
+ol{
+    margin:auto; 
+    height:100px;
+    width:100px;
+    background-color: grey;
+}
+
+li{
+    
+    background-color: yellow;
+}
+
+    
