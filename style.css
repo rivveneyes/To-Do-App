@@ -1,29 +1,75 @@
 *{
-    margin:0;
-    padding:0;
+    margin:0px;
+    padding:0px;
+    border:0px;
     box-sizing: border-box;
 
 }
-div{ 
-    background-color: red;
-    width:fit-content;
-    height:30px;
-    display:flex;
-    
+body{
+    background-color: teal;
 }
+h1{
+    text-align: center;
+    font-size: 100px;
+    color:rgb(118, 221, 221);
+  }
+
+#app{ 
+    background-color: rgb(118, 221, 221);       
+    min-height:300px;
+    max-width: 80%;
+    margin:auto;
+}
+   
 button{
-    margin-left:20px;
+    color:white;
+    height:24px;
+    width:7.2rem;
+    background-color:rgb(87, 80, 190) ;
+}
+button:hover{
+    color:red;
+}
+#todo{
+    margin-left:100px;
+    height:25px;
 }
 ol{
     margin:auto; 
-    height:100px;
-    width:300px;
-    background-color: grey;
+    
+    
+    
+    list-style-type: none;
 }
 
 li{
-    
-    background-color: yellow;
+    margin-top:2px;
+    position: relative;
+    font-size:22px;
+    background-color:teal;
+    border-radius:0px 20px 20px 0px;
+    color:white
+}
+li:nth-child(odd){
+background-color: rgb(107, 129, 129);
+}
+li>button{
+    position: absolute;
+    left:350px;
+    margin-left:20px;
+}
+li>input{
+    margin-top:7px;
+    position: absolute;
+    left:350px;
 }
 
     
+.panel{
+width:80%;
+margin: auto;
+}
+.panel>button{
+    float: right;
+    margin-left: 10px;
+}
