@@ -18,9 +18,10 @@ h1{
     min-height:300px;
     max-width: 80%;
     margin:auto;
+    text-align:center;
 }
 #todo{
-    margin-left:200px;
+
     height:25px;
 }
    
