@@ -20,10 +20,14 @@ h1{
     margin:auto;
     text-align:center;
 }
-#todo{
+input{
     height:25px;
 }
-   
+.replace{  
+    display: block;
+    margin: auto;
+    margin-top:3px;
+}
 button{
     color:white;
     height:24px;

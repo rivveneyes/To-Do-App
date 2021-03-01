@@ -48,7 +48,7 @@ list.addEventListener("click", e=>{
 
    case "edit":{
       let newInput= document.createElement("input")
-      
+      newInput.className="replace listed-item"
       newInput.addEventListener("keyup", e=>{
       if(e.key=="Enter"){      
          let newEdit= listBuilder(e.target.value);
