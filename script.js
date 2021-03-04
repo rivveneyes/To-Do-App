@@ -5,11 +5,11 @@ const panal=document.getElementsByClassName("panel")[0];
 const divData=document.getElementById('app');
 
 
-
+//data entry options 
 divData.addEventListener("keyup" ,e=>{
    if (e.key=="Enter" && addedItem.value!=="") {
  const li=listBuilder(addedItem.value);
-cycleReste(li);
+cycleRest(li);
    }
 })
 
@@ -19,15 +19,15 @@ button.addEventListener("click", e=>{
    }
    else{
    const li=listBuilder(addedItem.value);
-   cycleReste(li);
+   cycleRest(li);
    }
 })
 
 
-
+//list button logic controlls
 list.addEventListener("click", e=>{
-   var option= e.target;
-   var liItem= option.parentNode;
+   let option= e.target;
+   let liItem= option.parentNode;
 
    switch(option.className){   
    case "delete":{
@@ -38,6 +38,7 @@ list.addEventListener("click", e=>{
    case"complete":{
       if(option.checked){
       liItem.style.textDecoration ="line-through";
+      liItem.style.textDecorationThickness="18%";
       liItem.style.textDecorationColor ="red";
    }
    else{
@@ -49,6 +50,7 @@ list.addEventListener("click", e=>{
    case "edit":{
       let newInput= document.createElement("input")
       newInput.className="replace listed-item"
+      
       newInput.addEventListener("keyup", e=>{
       if(e.key=="Enter"){      
          let newEdit= listBuilder(e.target.value);
@@ -58,13 +60,12 @@ list.addEventListener("click", e=>{
       list.replaceChild(newInput,liItem);
       break;
    }
-}}
-)
-;
+}});
+
 panal.addEventListener("click", e=>{
-   var option = e.target;
-   var listItems=document.getElementsByClassName("listed-item");
-   var checkBoxes=document.getElementsByClassName('complete');
+   let option = e.target;
+   let listItems=document.getElementsByClassName("listed-item");
+   let checkBoxes=document.getElementsByClassName('complete');
    
    if(option.innerText=="clear"){   
    for(let i=listItems.length-1;i>=0;i--){
@@ -82,10 +83,10 @@ panal.addEventListener("click", e=>{
 
 
 function listBuilder(value){
-var item=document.createElement("li");
-var remover = document.createElement("button");
-var edit= document.createElement("button");
-var completer = document.createElement("input");
+let item=document.createElement("li");
+let remover = document.createElement("button");
+let edit= document.createElement("button");
+let completer = document.createElement("input");
 
 remover.type="button";
 remover.className="delete";
@@ -108,7 +109,7 @@ return item;
 
 
 
-function cycleReste(item){
+function cycleRest(item){
 list.appendChild(item);
 addedItem.value=""
 }
