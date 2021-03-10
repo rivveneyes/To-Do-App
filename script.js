@@ -4,32 +4,23 @@ const addedItem = document.querySelector("input");
 const panal=document.getElementsByClassName("panel")[0];
 const divData=document.getElementById('app');
 
-
-//data entry options 
 divData.addEventListener("keyup" ,e=>{
    if (e.key=="Enter" && addedItem.value!=="") {
- const li=listBuilder(addedItem.value);
-cycleRest(li);
+takeInput();
    }
 })
-
 button.addEventListener("click", e=>{
    if(addedItem.value==""){
-      alert("please enter todo");
+     return alert("please enter todo");
    }
-   else{
    const li=listBuilder(addedItem.value);
-   cycleRest(li);
-   }
+   takeInput(li);
 })
-
-
-//list button logic controlls
 list.addEventListener("click", e=>{
    let option= e.target;
    let liItem= option.parentNode;
+   switch(option.className){  
 
-   switch(option.className){   
    case "delete":{
       list.removeChild(liItem);
       break
@@ -49,30 +40,25 @@ list.addEventListener("click", e=>{
 
    case "edit":{
       let newInput= document.createElement("input")
-      newInput.className="replace listed-item"
-      
+      list.replaceChild(newInput,liItem);
       newInput.addEventListener("keyup", e=>{
       if(e.key=="Enter"){      
          let newEdit= listBuilder(e.target.value);
          list.replaceChild(newEdit,newInput)
       }
-   })
-      list.replaceChild(newInput,liItem);
-      break;
+   }) 
+   break;
    }
 }});
-
 panal.addEventListener("click", e=>{
    let option = e.target;
+   if(option.innerText=="clear"){
    let listItems=document.getElementsByClassName("listed-item");
-   let checkBoxes=document.getElementsByClassName('complete');
-   
-   if(option.innerText=="clear"){   
    for(let i=listItems.length-1;i>=0;i--){
       list.removeChild(listItems[i]);
    }}
    if(option.innerText=="finished"){
-   
+      let checkBoxes=document.getElementsByClassName('complete');
       for(let i=checkBoxes.length-1; i>=0;i--){
          if(checkBoxes[i].checked==true){
             list.removeChild(checkBoxes[i].parentElement);
@@ -81,35 +67,37 @@ panal.addEventListener("click", e=>{
    }
 });
 
-
-function listBuilder(value){
-let item=document.createElement("li");
-let remover = document.createElement("button");
+function takeInput(){
+   const li=listBuilder(addedItem.value);
+   list.appendChild(li);
+   addedItem.value=""
+}  
+function listBuilder(value){   
+const item=document.createElement("li");
+item.innerText=value;
+item.className="listed-item";
+item.appendChild(makeDeleteButton());
+item.appendChild(makeEditButton());
+item.appendChild(makeCheckBox());
+return item;
+}
+function makeDeleteButton(){
+let deleteButton = document.createElement("button");
+ deleteButton.type="button";
+deleteButton.className="delete";
+deleteButton.innerText="remove";
+return deleteButton
+}
+function makeEditButton(){
 let edit= document.createElement("button");
-let completer = document.createElement("input");
-
-remover.type="button";
-remover.className="delete";
-remover.innerText="remove";
-
-completer.type="checkbox";
-completer.className="complete";
-
 edit.type="button";
 edit.className="edit"
 edit.innerText="edit";
-
-item.innerText=value;
-item.className="listed-item";
-item.appendChild(remover);
-item.appendChild(edit);
-item.appendChild(completer);
-return item;
+return edit
 }
-
-
-
-function cycleRest(item){
-list.appendChild(item);
-addedItem.value=""
+function makeCheckBox(){
+ let completer = document.createElement("input");
+completer.type="checkbox";
+completer.className="complete";
+return completer
 }
